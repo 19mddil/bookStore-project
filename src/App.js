@@ -24,14 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 style={{
-          color: "grey",
-          backgroundColor: "black",
-          marginLeft: "40%",
-          marginRight: "40%",
-          padding: "5px",
-        }}>BOOKLIST</h1>
-
+        <h1 className="Heading"> BOOKLIST </h1>
         {
           this.state.books.map((book, index) => {
             return (
