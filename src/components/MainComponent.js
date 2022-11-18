@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import Book from './Book';
+import BookList from '../assets/books'
+import BookLists from './listing/BookList'
 
 class MainComponent extends Component {
     state = {
-        books: [
-            { id: 1, bookName: "Alchemy of Happiness", writer: "Imam Gazzali" },
-            { id: 2, bookName: "The Lean StartUp", writer: "Eric Ries" },
-            { id: 3, bookName: "The Godfather", writer: "Mark Paulo" }
-        ],
+        books: BookList,
         showBooks: true,
     }
 
@@ -47,17 +44,7 @@ class MainComponent extends Component {
                 <button onClick={this.toggleShowbook}>Toggle Button</button><br />
                 {
                     this.state.showBooks ?
-                        this.state.books.map((book, index) => {
-                            return (
-                                <Book
-                                    bookName={book.bookName}
-                                    writer={book.writer}
-                                    delete={this.deleteBook.bind(this, index)}
-                                    key={book.id}
-                                    inputStateChange={event => this.inputStateChange(event, index)}
-                                />
-                            )
-                        })
+                        <BookLists books={this.state.books} deleteBook={this.deleteBook} inputStateChange={this.inputStateChange} />
                         : null
                 }
             </div>
