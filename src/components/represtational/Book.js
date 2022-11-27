@@ -14,6 +14,23 @@ class Book extends Component {
         console.log("Book component did mount");
     }
 
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        console.log("Book componentWillReceiveProp: ", nextProps);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("Book shouldComponentUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
+        return true;
+    }
+
+    UNSAFE_componentWillUpdate(nextProps, nextState) {
+        console.log("Book componentWillUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
+    }
+
+    componentDidUpdate() {
+        console.log("Book componentDidUpdate");
+    }
+
     render() {
         return (
             <div className='Book'>

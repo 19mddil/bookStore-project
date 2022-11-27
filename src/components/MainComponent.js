@@ -21,6 +21,23 @@ class MainComponent extends Component {
         console.log("MainComponent did mount");
     }
 
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        console.log("Main componentWillReceiveProp: ", nextProps);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("Main shouldComponentUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
+        return true;
+    }
+
+    UNSAFE_componentWillUpdate(nextProps, nextState) {
+        console.log("Main componentWillUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
+    }
+
+    componentDidUpdate() {
+        console.log("Main componentDidUpdate");
+    }
+
     deleteBook = index => {
         const books = [...this.state.books];
         books.splice(index, 1);
