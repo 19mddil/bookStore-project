@@ -3,9 +3,22 @@ import BookList from '../assets/books'
 import BookLists from './listing/BookList'
 
 class MainComponent extends Component {
-    state = {
-        books: BookList,
-        showBooks: true,
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            books: BookList,
+            showBooks: true,
+        }
+        console.log("MainComponent constructor");
+    }
+
+    UNSAFE_componentWillMount() {
+        console.log("MainComponent componentWillMount")
+    }
+
+    componentDidMount() {
+        console.log("MainComponent did mount");
     }
 
     deleteBook = index => {
