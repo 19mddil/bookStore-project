@@ -21,10 +21,6 @@ class MainComponent extends Component {
         console.log("MainComponent did mount");
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        console.log("Main componentWillReceiveProp: ", nextProps);
-    }
-
     shouldComponentUpdate(nextProps, nextState) {
         console.log("Main shouldComponentUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
         return true;
