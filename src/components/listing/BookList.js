@@ -12,7 +12,7 @@ class BookList extends Component {
                         writer={book.writer}
                         delete={() => this.props.deleteBook(index)}
                         key={book.id}
-                        Index={book.id}
+                        index={book.id}
                         inputStateChange={event => this.props.inputStateChange(event, index)}
                         updateIndex={this.props.updateIndex}
                     />
