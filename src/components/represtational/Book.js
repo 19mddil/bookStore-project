@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import '../../stylesheets/Book.css'
 
 class Book extends Component {
-    constructor(props) {
-        super(props);
-        console.log("Book Component Constructor");
-    }
 
     UNSAFE_componentWillMount() {
         console.log("Book component willmount");
@@ -15,16 +11,19 @@ class Book extends Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        console.log("Book componentWillReceiveProp: ", nextProps);
+        console.log("Book componentWillReceiveProp");
+        console.log(nextProps);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log("Book shouldComponentUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
-        return true;
+        console.log("Book shouldComponentUpdate");
+        console.log(nextProps);
+        return !(nextProps.Index === nextProps.updateIndex);
     }
 
     UNSAFE_componentWillUpdate(nextProps, nextState) {
-        console.log("Book componentWillUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
+        console.log("Book componentWillUpdate");
+        console.log(nextProps);
     }
 
     componentDidUpdate() {
@@ -32,6 +31,7 @@ class Book extends Component {
     }
 
     render() {
+        console.log("render()");
         return (
             <div className='Book'>
                 <h2 onClick={this.props.delete} >{this.props.bookName}</h2>

@@ -9,29 +9,8 @@ class MainComponent extends Component {
         this.state = {
             books: BookList,
             showBooks: true,
+            updateIndex: null,
         }
-        console.log("MainComponent constructor");
-    }
-
-    UNSAFE_componentWillMount() {
-        console.log("MainComponent componentWillMount")
-    }
-
-    componentDidMount() {
-        console.log("MainComponent did mount");
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("Main shouldComponentUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
-        return true;
-    }
-
-    UNSAFE_componentWillUpdate(nextProps, nextState) {
-        console.log("Main componentWillUpdate, \nNextProps: ", nextProps, "\nNextState: ", nextState);
-    }
-
-    componentDidUpdate() {
-        console.log("Main componentDidUpdate");
     }
 
     deleteBook = index => {
@@ -52,6 +31,7 @@ class MainComponent extends Component {
 
         this.setState({
             books: books,
+            updateIndex: index,
         })
 
     }
@@ -62,7 +42,6 @@ class MainComponent extends Component {
         })
         return;
     }
-
     render() {
         return (
             <div className="App">
@@ -70,7 +49,7 @@ class MainComponent extends Component {
                 <button onClick={this.toggleShowbook}>Toggle Button</button><br />
                 {
                     this.state.showBooks ?
-                        <BookLists books={this.state.books} deleteBook={this.deleteBook} inputStateChange={this.inputStateChange} />
+                        <BookLists books={this.state.books} deleteBook={this.deleteBook} inputStateChange={this.inputStateChange} updateIndex={this.state.updateIndex} />
                         : null
                 }
             </div>
