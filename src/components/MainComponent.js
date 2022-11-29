@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import BookList from '../assets/books'
-import BookLists from './listing/BookList'
+import BookList from '../assets/books';
+import BookLists from './listing/BookList';
+import NewBook from './represtational/NewBook';
 
 class MainComponent extends Component {
 
@@ -45,6 +46,12 @@ class MainComponent extends Component {
     render() {
         return (
             <div className="App">
+                <div className='nav-bar'>
+                    <ul>
+                        <li><a href='/' >Home</a></li>
+                        <li><a href='/new' >New Book</a></li>
+                    </ul>
+                </div>
                 <h1 className="Heading"> BOOKLIST </h1>
                 <button onClick={this.toggleShowbook}>Toggle Button</button><br />
                 {
@@ -52,6 +59,7 @@ class MainComponent extends Component {
                         <BookLists books={this.state.books} deleteBook={this.deleteBook} inputStateChange={this.inputStateChange} updateIndex={this.state.updateIndex} />
                         : null
                 }
+                <NewBook />
             </div>
         );
     }
