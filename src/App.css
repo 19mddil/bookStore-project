@@ -17,3 +17,13 @@
   text-decoration: none;
   color: black;
 }
+
+
+a:active,
+a.active {
+  color: orange;
+}
+
+.nav-bar a:hover {
+  color: blue;
+}

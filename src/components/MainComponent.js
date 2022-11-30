@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import BookList from '../assets/books';
 import BookLists from './listing/BookList';
 import NewBook from './represtational/NewBook';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import BookDetail from './represtational/BookDetail';
 
 class MainComponent extends Component {
 
@@ -9,17 +11,16 @@ class MainComponent extends Component {
         super(props);
         this.state = {
             books: BookList,
-            showBooks: true,
             updateIndex: null,
+            selectedBook: null,
         }
     }
 
-    deleteBook = index => {
-        const books = [...this.state.books];
-        books.splice(index, 1);
+    selectedBookHandler = index => {
+        const book = this.state.books.filter(book => book.id === index + 1)[0];
         this.setState({
-            books: books,
-        });
+            selectedBook: book,
+        })
     }
 
     inputStateChange = (event, index) => {
@@ -36,30 +37,24 @@ class MainComponent extends Component {
         })
 
     }
-
-    toggleShowbook = () => {
-        this.setState({
-            showBooks: !this.state.showBooks,
-        })
-        return;
-    }
     render() {
+        const books = (<BookLists books={this.state.books} selectedBookHandler={this.selectedBookHandler} inputStateChange={this.inputStateChange} updateIndex={this.state.updateIndex} />);
         return (
             <div className="App">
-                <div className='nav-bar'>
+                <nav className='nav-bar'>
                     <ul>
-                        <li><a href='/' >Home</a></li>
-                        <li><a href='/new' >New Book</a></li>
+                        <li><NavLink to='/' >Home</NavLink></li>
+                        <li><NavLink to='/book' >Books</NavLink></li>
+                        <li><NavLink to='/newBook' >+Add New Book</NavLink></li>
                     </ul>
-                </div>
+                </nav>
                 <h1 className="Heading"> BOOKLIST </h1>
-                <button onClick={this.toggleShowbook}>Toggle Button</button><br />
-                {
-                    this.state.showBooks ?
-                        <BookLists books={this.state.books} deleteBook={this.deleteBook} inputStateChange={this.inputStateChange} updateIndex={this.state.updateIndex} />
-                        : null
-                }
-                <NewBook />
+                <Routes>
+                    <Route path='/' element={(<div><h1>Home</h1></div>)} />
+                    <Route path='/book' element={books} />
+                    <Route path='/newBook' element={<NewBook />} />
+                </Routes>
+                <BookDetail book={this.state.selectedBook} />
             </div>
         );
     }
