@@ -19,3 +19,8 @@
     color: red;
     cursor: pointer;
 }
+
+.BookLink {
+    text-decoration: none;
+    color: black;
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import BookList from '../assets/books';
 import BookLists from './listing/BookList';
 import NewBook from './represtational/NewBook';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import BookDetail from './represtational/BookDetail';
 
 class MainComponent extends Component {
@@ -50,11 +50,11 @@ class MainComponent extends Component {
                 </nav>
                 <h1 className="Heading"> BOOKLIST </h1>
                 <Routes>
-                    <Route path='/' element={(<div><h1>Home</h1></div>)} />
+                    <Route path='/' element={<Navigate to='/book' />} />
                     <Route path='/book' element={books} />
                     <Route path='/newBook' element={<NewBook />} />
+                    <Route path='/book/:id' element={<BookDetail book={this.state.selectedBook} />} />
                 </Routes>
-                <BookDetail book={this.state.selectedBook} />
             </div>
         );
     }

@@ -12,6 +12,7 @@ const BookDetail = props => {
         <div>
             <h1>{props.book.bookName}</h1>
             <h2>{props.book.writer}</h2>
+            <p>{props.book.description}</p>
         </div>
     )
 
