@@ -8,6 +8,8 @@ class NewBook extends Component {
             writer: null,
             description: null,
         }
+        this.textHandler = this.textHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
 
     textHandler = (event) => {
@@ -16,25 +18,27 @@ class NewBook extends Component {
         });
     }
 
-    componentDidUpdate() {
+    submitHandler = event => {
         console.log(this.state);
+        event.preventDefault();
     }
+
     render() {
         return (
             <div>
                 <h1>New Book entry</h1>
-                <form>
+                <form onSubmit={this.submitHandler}>
                     <label>Book Name:</label>
                     <br />
-                    <input type="text" name="bookName" value={this.state.bookName} onChange={(event) => this.textHandler(event)} />
+                    <input type="text" name="bookName" value={this.state.bookName} onChange={this.textHandler} />
                     <br />
                     <label>Writer Name:</label>
                     <br />
-                    <input type="text" name="writer" value={this.state.writer} onChange={(event) => this.textHandler(event)} />
+                    <input type="text" name="writer" value={this.state.writer} onChange={this.textHandler} />
                     <br />
                     <label>Description:</label>
                     <br />
-                    <textarea name="description" value={this.state.description} onChange={(event) => this.textHandler(event)} />
+                    <textarea name="description" value={this.state.description} onChange={this.textHandler} />
                     <br />
                     <input type="submit" value="Submit" />
                 </form>
